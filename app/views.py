@@ -64,6 +64,8 @@ def logout():
 @app.route('/filelisting')
 def file_listing():
     """ Lists uploaded files """
+    if not session.get('logged_in'):
+        abort(401)
     filelist = [] 
     rootdir = os.getcwd() 
     
